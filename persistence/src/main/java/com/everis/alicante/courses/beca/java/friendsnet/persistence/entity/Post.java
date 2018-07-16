@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -40,7 +41,8 @@ public class Post implements FNEntity {
 	
 	private byte[] picture;
 	
-	@OneToMany(mappedBy="post_id")
+	@OneToMany
+	@JoinTable(name = "LIKES_OF_EVENT", joinColumns = @JoinColumn(name = "like_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
     private List<Like> likesOf;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)

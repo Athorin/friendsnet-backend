@@ -33,10 +33,7 @@ public class Group implements FNEntity{
 	private byte[] picture;
 	
 	
-    @ManyToMany
-    @JoinTable(name="PERSONS_OF_GROUP", 
-    joinColumns = @JoinColumn(name="person_id"),
-    inverseJoinColumns = @JoinColumn(name="group_id"))    
+    @ManyToMany(mappedBy = "person_id")   
     private List<Person> personsOf;
 	
 }

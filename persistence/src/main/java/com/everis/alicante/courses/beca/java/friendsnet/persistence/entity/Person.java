@@ -19,56 +19,45 @@ import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter @Getter
-
+@Setter
+@Getter
 
 /**
  * @author Pakychoko
  *
  */
 @Entity
-public class Person implements FNEntity{
+public class Person implements FNEntity {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	private String name;
-	
-	private String surname;
-	
-	private byte[] picture;
-	
-	
-    @ManyToMany
-    @JoinTable(name="FRIENDS", 
-    joinColumns = @JoinColumn(name="person_id"),
-    inverseJoinColumns = @JoinColumn(name="friend_id"))
-    private List<Person> friends;
-    
-    @ManyToMany
-    @JoinTable(name="FRIENDS_OF", 
-    joinColumns = @JoinColumn(name="person_id"),
-    inverseJoinColumns = @JoinColumn(name="friend_id"))
-    private List<Person> friendsOf;
-    
-    
-    
-    @ManyToMany
-    @JoinTable(name="GROUPS_OF_PERSON", 
-    joinColumns = @JoinColumn(name="person_id"),
-    inverseJoinColumns = @JoinColumn(name="group_id"))    
-    private List<Group> groupsOf;
 
-    @ManyToMany
-    @JoinTable(name="EVENTS_OF_PERSON", 
-    joinColumns = @JoinColumn(name="person_id"),
-    inverseJoinColumns = @JoinColumn(name="event_id"))
-    private List<Event> eventsOf;
-    
-	@OneToMany(mappedBy="person_id")
-    private List<Post> postsOf;
-	
-	@OneToMany(mappedBy="person_id")
-    private List<Like> likeOf;
-	
+	private String name;
+
+	private String surname;
+
+	private byte[] picture;
+
+	@ManyToMany
+	@JoinTable(name = "PERSONS_OF_FRIEND", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))
+	private List<Person> friends;
+
+	@ManyToMany(mappedBy = "friends")
+	private List<Person> friendsOf;
+
+	@ManyToMany
+	@JoinTable(name = "GROUPS_OF_PERSON", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+	private List<Group> groupsOf;
+
+	@ManyToMany
+	@JoinTable(name = "EVENTS_OF_PERSON", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+	private List<Event> eventsOf;
+
+	@OneToMany(mappedBy = "person_id")
+	private List<Post> postsOf;
+
+	@OneToMany(mappedBy = "person_id")
+	private List<Like> likeOf;
+
 }

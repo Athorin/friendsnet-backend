@@ -43,10 +43,7 @@ public class Event implements FNEntity{
 	private byte[] picture;
 	
 	
-    @ManyToMany
-    @JoinTable(name="PERSONS_OF_EVENT", 
-    joinColumns = @JoinColumn(name="person_id"),
-    inverseJoinColumns = @JoinColumn(name="event_id"))
+    @ManyToMany(mappedBy = "person_id")
     private List<Person> personsOf;
     
     @OneToMany(mappedBy = "event_id")
