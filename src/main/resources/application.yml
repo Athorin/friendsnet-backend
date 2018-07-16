@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: friendsnet
+  datasource:
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
+    url: jdbc:h2:mem:~/db_friendsnet;DB_CLOSE_DELAY=1000
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+logging:
+  level:
+    org.springframework: INFO
+server:
+  port: 8080
