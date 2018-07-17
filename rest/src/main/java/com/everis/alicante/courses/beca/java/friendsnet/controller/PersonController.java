@@ -5,6 +5,9 @@ package com.everis.alicante.courses.beca.java.friendsnet.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PersonManager;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
@@ -14,10 +17,13 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Perso
  */
 public class PersonController {
 
+	@Autowired
 	private PersonManager manager;
 	
+	@GetMapping("/person")
 	public List<Person> getAll(){
-		return null;
+		
+		return (List<Person>) manager.findAll();
 	}
 	
 	public Person getById(Long id) {

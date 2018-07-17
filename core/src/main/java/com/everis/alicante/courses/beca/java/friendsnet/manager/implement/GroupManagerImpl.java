@@ -5,7 +5,10 @@ package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.everis.alicante.courses.beca.java.friendsnet.manager.GroupManager;
+import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.GroupDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Group;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
@@ -13,78 +16,49 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Perso
  * @author paco_
  *
  */
-public class GroupManagerImpl implements GroupManager<Group,Long>{
+public class GroupManagerImpl implements GroupManager{
 
-	@Override
-	public <S extends Group> S save(S group) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <S extends Group> Iterable<S> saveAll(Iterable<S> groups) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Optional<Group> findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean existsById(Long id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	@Autowired
+	private GroupDAO<Group, Long> dao;
 
 	@Override
 	public Iterable<Group> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findAll();
 	}
 
 	@Override
-	public Iterable<Group> findAllById(Iterable<Long> ids) {
-		// TODO Auto-generated method stub
-		return null;
+	public Group findById(Long id) {
+		return dao.findById(id).get();
 	}
 
 	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void save(Group group) {
+		dao.save(group);
 	}
 
 	@Override
-	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+	public void save(Iterable<Group> groups) {
+		dao.saveAll(groups);
 	}
 
 	@Override
-	public void delete(Group group) {
-		// TODO Auto-generated method stub
-		
+	public void update(Group group) {
+		dao.save(group);
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Group> group) {
-		// TODO Auto-generated method stub
-		
+	public void update(Iterable<Group> groups) {
+		dao.saveAll(groups);
 	}
 
 	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
+	public void remove(Group group) {
+		dao.delete(group);
 	}
 
 	@Override
 	public Group addPersons(Iterable<Person> group) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.addPersons(group);
 	}
 
 }

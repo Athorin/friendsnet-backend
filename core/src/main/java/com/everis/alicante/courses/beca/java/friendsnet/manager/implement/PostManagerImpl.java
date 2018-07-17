@@ -3,9 +3,10 @@
  */
 package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 
-import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PostManager;
+import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.PostDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Like;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
 
@@ -13,78 +14,50 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
  * @author Pakychoko
  *
  */
-public class PostManagerImpl implements PostManager<Post,Long> {
+public class PostManagerImpl implements PostManager {
 
-	@Override
-	public <S extends Post> S save(S entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <S extends Post> Iterable<S> saveAll(Iterable<S> entities) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Optional<Post> findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean existsById(Long id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	@Autowired
+	private PostDAO<Post, Long> dao;
 
 	@Override
 	public Iterable<Post> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findAll();
 	}
 
 	@Override
-	public Iterable<Post> findAllById(Iterable<Long> ids) {
-		// TODO Auto-generated method stub
-		return null;
+	public Post findById(Long id) {
+		return dao.findById(id).get();
 	}
 
 	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void save(Post post) {
+		dao.save(post);
 	}
 
 	@Override
-	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+	public void save(Iterable<Post> posts) {
+		dao.saveAll(posts);
 	}
 
 	@Override
-	public void delete(Post entity) {
-		// TODO Auto-generated method stub
-		
+	public void update(Post post) {
+		dao.save(post);
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Post> entities) {
-		// TODO Auto-generated method stub
-		
+	public void update(Iterable<Post> posts) {
+		dao.saveAll(posts);
 	}
 
 	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
+	public void remove(Post post) {
+		dao.delete(post);
 	}
 
 	@Override
 	public Post addLike(Like like) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.addLike(like);
 	}
+	
 
 }
