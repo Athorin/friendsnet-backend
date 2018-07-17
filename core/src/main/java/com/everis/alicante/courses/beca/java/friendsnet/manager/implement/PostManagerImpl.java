@@ -30,23 +30,23 @@ public class PostManagerImpl implements PostManager {
 	}
 
 	@Override
-	public void save(Post post) {
-		dao.save(post);
+	public Post save(Post post) {
+		return dao.save(post);
 	}
 
 	@Override
-	public void save(Iterable<Post> posts) {
-		dao.saveAll(posts);
+	public Iterable<Post> save(Iterable<Post> posts) {
+		return dao.saveAll(posts);
 	}
 
 	@Override
-	public void update(Post post) {
-		dao.save(post);
+	public Post update(Post post) {
+		return dao.save(post);
 	}
 
 	@Override
-	public void update(Iterable<Post> posts) {
-		dao.saveAll(posts);
+	public Iterable<Post> update(Iterable<Post> posts) {
+		return dao.saveAll(posts);
 	}
 
 	@Override

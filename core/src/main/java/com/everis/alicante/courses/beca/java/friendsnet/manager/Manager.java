@@ -14,13 +14,13 @@ public interface Manager<E,ID>{
 	
 	public E findById(ID id);
 	
-	public void save(E e);
+	public E save(E e);
 	
-	public void save(Iterable<E> ei);
+	public Iterable<E> save(Iterable<E> ei);
 	
-	public void update(E e);
+	public E update(E e);
 	
-	public void update(Iterable<E> ei);
+	public Iterable<E> update(Iterable<E> ei);
 	
 	public void remove(E e);
 	

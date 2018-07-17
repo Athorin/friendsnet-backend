@@ -30,23 +30,23 @@ public class PersonManagerImpl implements PersonManager{
 	}
 
 	@Override
-	public void save(Person person) {
-		dao.save(person);		
+	public Person save(Person person) {
+		return dao.save(person);		
 	}
 
 	@Override
-	public void save(Iterable<Person> people) {
-		dao.saveAll(people);
+	public Iterable<Person> save(Iterable<Person> people) {
+		return dao.saveAll(people);
 	}
 
 	@Override
-	public void update(Person person) {
-		dao.save(person);
+	public Person update(Person person) {
+		return dao.save(person);
 	}
 
 	@Override
-	public void update(Iterable<Person> people) {
-		dao.saveAll(people);
+	public Iterable<Person> update(Iterable<Person> people) {
+		return dao.saveAll(people);
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class PersonManagerImpl implements PersonManager{
 	}
 
 	@Override
-	public Person relatePersons(Iterable<Person> people) {
-		return dao.relatedPersons(people);
+	public Person relatePersons(Person person, Iterable<Person> people) {
+		return person.
 	}
 	
 

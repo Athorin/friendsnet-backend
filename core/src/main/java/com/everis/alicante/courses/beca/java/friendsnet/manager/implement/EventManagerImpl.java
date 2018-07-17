@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.EventManager;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.EventDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Event;
+import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
 /**
  * @author Pakychoko
@@ -32,27 +33,27 @@ public class EventManagerImpl implements EventManager{
 	}
 
 	@Override
-	public void save(Event event) {
+	public Event save(Event event) {
 		
-		dao.save(event);
+		return dao.save(event);
 	}
 
 	@Override
-	public void save(Iterable<Event> events) {
+	public Iterable<Event> save(Iterable<Event> events) {
 		
-		dao.saveAll(events);	
+		return dao.saveAll(events);	
 	}
 
 	@Override
-	public void update(Event event) {
+	public Event update(Event event) {
 		
-		dao.save(event);
+		return dao.save(event);
 	}
 
 	@Override
-	public void update(Iterable<Event> events) {
+	public Iterable<Event> update(Iterable<Event> events) {
 		
-		dao.saveAll(events);
+		return dao.saveAll(events);
 	}
 
 	@Override
@@ -62,6 +63,11 @@ public class EventManagerImpl implements EventManager{
 	}
 	
 
+	public Event addPerson(Person person, Event event) {
+		event.getPersonsOf().add(person);
+		return event;
+
+	}
 
 
 }
