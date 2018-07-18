@@ -6,6 +6,7 @@ package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.java.friendsnet.manager.GroupManager;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.GroupDAO;
@@ -13,13 +14,14 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Group
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
 /**
- * @author paco_
+ * @author Pakychoko
  *
  */
+@Service
 public class GroupManagerImpl implements GroupManager{
 
 	@Autowired
-	private GroupDAO<Group, Long> dao;
+	private GroupDAO dao;
 
 	@Override
 	public Iterable<Group> findAll() {
@@ -57,7 +59,8 @@ public class GroupManagerImpl implements GroupManager{
 	}
 
 	@Override
-	public Group addPersons(Group group, Iterable<Person> people) {
+	public Group addPersons(Long id, Iterable<Person> people) {
+		Group group = dao.findById(id).get();
 		group.getPersonsOf().addAll((Collection<? extends Person>) people);
 		return group;
 	}

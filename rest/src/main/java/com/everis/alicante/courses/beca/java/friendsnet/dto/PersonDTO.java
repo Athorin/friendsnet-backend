@@ -23,16 +23,16 @@ public class PersonDTO {
 
 	private byte[] picture;
 	
-
-	private List<Person> friends;
-
-	private List<Person> friendsOf;
-
-	private List<Group> groupsOf;
-
-	private List<Event> eventsOf;
-
-	private List<Post> postsOf;
-
-	private List<Like> likeOf;
+//
+//	private List<Person> friends;
+//
+//	private List<Person> friendsOf;
+//
+//	private List<Group> groupsOf;
+//
+//	private List<Event> eventsOf;
+//
+//	private List<Post> postsOf;
+//
+//	private List<Like> likeOf;
 }

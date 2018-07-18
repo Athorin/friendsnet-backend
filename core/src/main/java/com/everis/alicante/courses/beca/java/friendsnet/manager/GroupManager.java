@@ -12,5 +12,5 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Perso
  */
 public interface GroupManager extends Manager<Group,Long>{
 
-	public Group addPersons(Group group, Iterable<Person> people);
+	public Group addPersons(Long id, Iterable<Person> people);
 }

@@ -14,24 +14,25 @@ import javax.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter @Getter
+@Setter
+@Getter
 
 /**
  * @author Pakychoko
  *
  */
-@Entity
-public class Group implements FNEntity{
+@Entity(name = "GROUP_TABLE")
+public class Group implements FNEntity {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private byte[] picture;
-	
-	
-    @ManyToMany(mappedBy = "person_id")   
-    private List<Person> personsOf;
-	
+
+	@ManyToMany(mappedBy = "groupsOf")
+	private List<Person> personsOf;
+
 }

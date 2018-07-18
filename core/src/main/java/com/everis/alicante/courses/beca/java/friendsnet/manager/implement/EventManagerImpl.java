@@ -5,9 +5,11 @@ package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.java.friendsnet.manager.EventManager;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.EventDAO;
+import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.PersonDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Event;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
@@ -15,10 +17,14 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Perso
  * @author Pakychoko
  *
  */
+@Service
 public class EventManagerImpl implements EventManager{
 
 	@Autowired
-	private EventDAO<Event,Long> dao;
+	private EventDAO dao;
+	
+	@Autowired
+	private PersonDAO pDao;
 
 	@Override
 	public Iterable<Event> findAll() {
@@ -63,10 +69,11 @@ public class EventManagerImpl implements EventManager{
 	}
 	
 
-	public Event addPerson(Person person, Event event) {
+	public Event addPerson(Long id_person, Long id_event) {
+		Person person = pDao.findById(id_person).get();
+		Event event = dao.findById(id_event).get();
 		event.getPersonsOf().add(person);
 		return event;
-
 	}
 
 

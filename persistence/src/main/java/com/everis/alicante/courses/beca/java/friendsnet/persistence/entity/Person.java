@@ -52,10 +52,10 @@ public class Person implements FNEntity {
 	@JoinTable(name = "EVENTS_OF_PERSON", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
 	private List<Event> eventsOf;
 
-	@OneToMany(mappedBy = "person_id")
+	@OneToMany(mappedBy = "personOf")
 	private List<Post> postsOf;
 
-	@OneToMany(mappedBy = "person_id")
+	@OneToMany(mappedBy = "personOf")
 	private List<Like> likeOf;
 
 }

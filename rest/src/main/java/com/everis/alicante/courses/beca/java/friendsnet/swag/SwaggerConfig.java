@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.java.friendsnet;
+package com.everis.alicante.courses.beca.java.friendsnet.swag;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ public class SwaggerConfig {
    public Docket api() {
        return new Docket(DocumentationType.SWAGGER_2)  
          .select()                                  
-         .apis(RequestHandlerSelectors.basePackage("com.xxx"))
+         .apis(RequestHandlerSelectors.basePackage("com.everis.alicante.courses.beca.java.friendsnet.controller"))
          .paths(PathSelectors.any())                          
          .build();                                          
    }

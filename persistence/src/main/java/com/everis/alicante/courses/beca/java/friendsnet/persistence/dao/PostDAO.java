@@ -12,7 +12,7 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
  * @author Pakychoko
  *
  */
-public interface PostDAO<Post,Long> extends CrudRepository<Post,Long>{
+public interface PostDAO extends CrudRepository<Post,Long>{
 
-	public Post addLike(Like like);
+	//public Post addLike(Like like);
 }

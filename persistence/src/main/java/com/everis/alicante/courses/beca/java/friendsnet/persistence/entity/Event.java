@@ -41,10 +41,10 @@ public class Event implements FNEntity{
 	private byte[] picture;
 	
 	
-    @ManyToMany(mappedBy = "person_id")
+    @ManyToMany(mappedBy = "eventsOf")
     private List<Person> personsOf;
     
-    @OneToMany(mappedBy = "event_id")
+    @OneToMany(mappedBy = "eventOf")
     private List<Post> postsOf;
 	
 }

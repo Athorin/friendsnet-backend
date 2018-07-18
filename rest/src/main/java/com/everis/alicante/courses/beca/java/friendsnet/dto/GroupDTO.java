@@ -2,8 +2,6 @@ package com.everis.alicante.courses.beca.java.friendsnet.dto;
 
 import java.util.List;
 
-import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,5 +15,5 @@ public class GroupDTO {
 	private byte[] picture;
 	
    
-    private List<Person> personsOf;
+    private List<PersonDTO> personsOf;
 }

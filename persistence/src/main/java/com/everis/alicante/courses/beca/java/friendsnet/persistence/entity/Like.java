@@ -25,7 +25,7 @@ import lombok.Setter;
  * @author Pakychoko
  *
  */
-@Entity
+@Entity(name = "LIKE_TABLE")
 public class Like implements FNEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class Like implements FNEntity {
 	@JoinColumn(name="person_id")
     private Person personOf;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="post_id")
 	private Post postOf;
 	

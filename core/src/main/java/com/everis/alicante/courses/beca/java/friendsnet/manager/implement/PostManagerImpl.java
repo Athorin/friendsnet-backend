@@ -4,6 +4,7 @@
 package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PostManager;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.PostDAO;
@@ -14,10 +15,11 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
  * @author Pakychoko
  *
  */
+@Service
 public class PostManagerImpl implements PostManager {
 
 	@Autowired
-	private PostDAO<Post, Long> dao;
+	private PostDAO dao;
 
 	@Override
 	public Iterable<Post> findAll() {
@@ -56,7 +58,7 @@ public class PostManagerImpl implements PostManager {
 
 	@Override
 	public Post addLike(Like like) {
-		return dao.addLike(like);
+		return null;
 	}
 	
 

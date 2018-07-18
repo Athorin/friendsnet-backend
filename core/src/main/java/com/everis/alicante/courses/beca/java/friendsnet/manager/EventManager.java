@@ -12,5 +12,5 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Perso
  */
 public interface EventManager extends Manager<Event,Long> {
 
-	public Event addPerson(Person person, Event event);
+	public Event addPerson(Long person, Long event);
 }

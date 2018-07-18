@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,42 +30,40 @@ public class EventController {
 
 	@Autowired
 	private EventManager manager;
-	
+
 	@Autowired
 	private PersonManager personManager;
-	
+
 	@Autowired
 	private DozerBeanMapper mapper;
-	
+
 	@SuppressWarnings("unchecked")
 	@GetMapping
-	public List<EventDTO> getAll(){
+	public List<EventDTO> getAll() {
 		return (List<EventDTO>) mapper.map(manager.findAll(), EventDTO.class);
 	}
-	
+
 	@GetMapping("/{id}")
 	public EventDTO getById(@PathVariable("id") Long id) {
 		return mapper.map(manager.findById(id), EventDTO.class);
 	}
-	
 
 	@SuppressWarnings("unchecked")
 	@GetMapping("/person/{id}")
-	public List<EventDTO> getByPersonId(@PathVariable("id") Long id_person){
-		
-		return (List<EventDTO>) mapper.map(personManager.findById(id_person).getEventsOf(), EventDTO.class) ;
+	public List<EventDTO> getByPersonId(@PathVariable("id") Long id_person) {
+		return (List<EventDTO>) mapper.map(personManager.findById(id_person).getEventsOf(), EventDTO.class);
 	}
-	
+
 	@PostMapping("/{id_event}/person/{id_person}/add")
-	public EventDTO addPerson(@PathVariable("id_person")Long id_person, @PathVariable("id_event")Long id_event) {
-		return mapper.map(manager.addPerson(personManager.findById(id_person),manager.findById(id_event)), EventDTO.class) ;
+	public EventDTO addPerson(@PathVariable("id_person") Long id_person, @PathVariable("id_event") Long id_event) {
+		return mapper.map(manager.addPerson(id_person, id_event), EventDTO.class);
 	}
-	
+
 	@PostMapping
-	public EventDTO create(Event event) {
-		return mapper.map(manager.save(event), EventDTO.class) ;
+	public EventDTO create(@RequestBody EventDTO event) {
+		return mapper.map(manager.save(mapper.map(event,Event.class)), EventDTO.class) ;
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void remove(@PathVariable("id") Long id) {
 		manager.remove(manager.findById(id));

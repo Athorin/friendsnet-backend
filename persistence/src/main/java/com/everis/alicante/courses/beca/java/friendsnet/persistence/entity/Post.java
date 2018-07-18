@@ -41,8 +41,7 @@ public class Post implements FNEntity {
 	
 	private byte[] picture;
 	
-	@OneToMany
-	@JoinTable(name = "LIKES_OF_EVENT", joinColumns = @JoinColumn(name = "like_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+	@OneToMany(mappedBy = "postOf")
     private List<Like> likesOf;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
