@@ -4,7 +4,6 @@
 package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -60,7 +59,7 @@ public class GroupManagerImpl implements GroupManager{
 	@Override
 	public Group addPersons(Group group, Iterable<Person> people) {
 		group.getPersonsOf().addAll((Collection<? extends Person>) people);
-		return group; ;revisar
+		return group;
 	}
 
 }

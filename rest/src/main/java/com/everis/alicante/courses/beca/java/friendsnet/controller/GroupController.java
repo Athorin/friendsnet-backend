@@ -9,6 +9,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,13 +45,13 @@ public class GroupController {
 	}
 	
 	@GetMapping("/{id}")
-	public GroupDTO getById(Long id) {
+	public GroupDTO getById(@PathVariable("id") Long id) {
 		return mapper.map(manager.findById(id), GroupDTO.class) ;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@GetMapping("/person/{id}")
-	public Iterable<GroupDTO> getByPersonId(Long id) {
+	public Iterable<GroupDTO> getByPersonId(@PathVariable("id") Long id) {
 		 return (Iterable<GroupDTO>) mapper.map(personManager.findById(id).getGroupsOf(), GroupDTO.class);
 	}	
 	
@@ -60,12 +61,12 @@ public class GroupController {
 	}
 
 	@PostMapping("/{id}/relate")
-	public GroupDTO relate(Long id, List<Person> personGroup) {
+	public GroupDTO relate(@PathVariable("id") Long id, List<Person> personGroup) {
 		return mapper.map(manager.addPersons(manager.findById(id), personGroup), GroupDTO.class) ;
 	}
 	
 	@DeleteMapping("/{id}")
-	public void remove(Long id) {
+	public void remove(@PathVariable("id") Long id) {
 		manager.remove(manager.findById(id));
 	}
 }

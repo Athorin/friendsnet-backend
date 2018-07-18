@@ -56,7 +56,7 @@ public class PersonManagerImpl implements PersonManager{
 
 	@Override
 	public Person relatePersons(Person person, Iterable<Person> people) {
-		return person.
+		return null;
 	}
 	
 

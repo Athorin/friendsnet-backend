@@ -9,6 +9,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,7 +41,7 @@ public class PersonController {
 	}
 	
 	@GetMapping("/{id}")
-	public PersonDTO getById(Long id) {
+	public PersonDTO getById(@PathVariable("id") Long id) {
 		return mapper.map(manager.findById(id), PersonDTO.class);
 	}
 	
@@ -50,12 +51,12 @@ public class PersonController {
 	}
 	
 	@PostMapping("/{id}/relate")
-	public PersonDTO relate(Long id, List<Person> people) {
+	public PersonDTO relate(@PathVariable("id") Long id, List<Person> people) {
 		return mapper.map(manager.relatePersons(manager.findById(id), people), PersonDTO.class);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void remove(Long id) {
+	public void remove(@PathVariable("id") Long id) {
 		manager.remove(manager.findById(id));
 	}
 }

@@ -50,12 +50,13 @@ public class EventController {
 
 	@SuppressWarnings("unchecked")
 	@GetMapping("/person/{id}")
-	public List<EventDTO> getByPersonId(Long id_person){
+	public List<EventDTO> getByPersonId(@PathVariable("id") Long id_person){
+		
 		return (List<EventDTO>) mapper.map(personManager.findById(id_person).getEventsOf(), EventDTO.class) ;
 	}
 	
 	@PostMapping("/{id_event}/person/{id_person}/add")
-	public EventDTO addPerson(Long id_person, Long id_event) {
+	public EventDTO addPerson(@PathVariable("id_person")Long id_person, @PathVariable("id_event")Long id_event) {
 		return mapper.map(manager.addPerson(personManager.findById(id_person),manager.findById(id_event)), EventDTO.class) ;
 	}
 	
@@ -65,7 +66,7 @@ public class EventController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void remove(Long id) {
+	public void remove(@PathVariable("id") Long id) {
 		manager.remove(manager.findById(id));
 	}
 }

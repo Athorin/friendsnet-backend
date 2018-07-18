@@ -9,6 +9,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,13 +44,13 @@ public class PostController {
 	}
 	
 	@GetMapping("/{id}")
-	public PostDTO getById(Long id) {
+	public PostDTO getById(@PathVariable("id") Long id) {
 		return mapper.map(manager.findById(id), PostDTO.class) ;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@GetMapping("/person/{id}")
-	public Iterable<PostDTO> getByPersonId(Long id) {
+	public Iterable<PostDTO> getByPersonId(@PathVariable("id") Long id) {
 		return (Iterable<PostDTO>) mapper.map(personManager.findById(id).getPostsOf(), PostDTO.class);
 	}	
 	
@@ -59,7 +60,7 @@ public class PostController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void remove(Long id) {
+	public void remove(@PathVariable("id") Long id) {
 		manager.remove(manager.findById(id));
 	}
 }
