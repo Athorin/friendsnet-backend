@@ -5,11 +5,15 @@ package com.everis.alicante.courses.beca.java.friendsnet.controller;
 
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.everis.alicante.courses.beca.java.friendsnet.dto.GroupDTO;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.GroupManager;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PersonManager;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Group;
@@ -19,6 +23,8 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Perso
  * @author Pakychoko
  *
  */
+@RestController
+@RequestMapping("/group")
 public class GroupController {
 
 	@Autowired
@@ -27,34 +33,39 @@ public class GroupController {
 	@Autowired
 	private PersonManager personManager;
 	
+	@Autowired
+	private DozerBeanMapper mapper;
 	
-	@GetMapping("/group")
-	public List<Group> getAll(){
-		return (List<Group>) manager.findAll();
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping
+	public List<GroupDTO> getAll(){
+		return (List<GroupDTO>) mapper.map(manager.findAll(), GroupDTO.class);
 	}
 	
-	@GetMapping("/group/{id}")
-	public Group getById(Long id) {
-		return manager.findById(id);
+	@GetMapping("/{id}")
+	public GroupDTO getById(Long id) {
+		return mapper.map(manager.findById(id), GroupDTO.class) ;
 	}
 	
-	@GetMapping("/group/person/{id}")
-	public Iterable<Group> getByPersonId(Long id) {
-		 return personManager.findById(id).getGroupsOf();
+	@SuppressWarnings("unchecked")
+	@GetMapping("/person/{id}")
+	public Iterable<GroupDTO> getByPersonId(Long id) {
+		 return (Iterable<GroupDTO>) mapper.map(personManager.findById(id).getGroupsOf(), GroupDTO.class);
 	}	
 	
-	@PostMapping("/group")
-	public Group create(Group group) {
-		return manager.save(group);
+	@PostMapping
+	public GroupDTO create(Group group) {
+		return mapper.map(manager.save(group), GroupDTO.class);
 	}
 
-	@PostMapping("/group/{id}/relate")
-	public Group relate(Long id, List<Person> personGroup) {
-		return manager.addPersons(manager.findById(id), personGroup);
+	@PostMapping("/{id}/relate")
+	public GroupDTO relate(Long id, List<Person> personGroup) {
+		return mapper.map(manager.addPersons(manager.findById(id), personGroup), GroupDTO.class) ;
 	}
 	
-	@DeleteMapping("/group/{id}")
+	@DeleteMapping("/{id}")
 	public void remove(Long id) {
-		
+		manager.remove(manager.findById(id));
 	}
 }

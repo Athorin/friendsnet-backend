@@ -5,11 +5,15 @@ package com.everis.alicante.courses.beca.java.friendsnet.controller;
 
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.everis.alicante.courses.beca.java.friendsnet.dto.PersonDTO;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PersonManager;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
@@ -18,34 +22,40 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Perso
  * @author Pakychoko
  * 
  */
+@RestController
+@RequestMapping("/person")
 public class PersonController {
 
 	@Autowired
 	private PersonManager manager;
 	
+	@Autowired
+	private DozerBeanMapper mapper;
 	
-	@GetMapping("/person")
-	public List<Person> getAll(){
-		return (List<Person>) manager.findAll();
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping
+	public List<PersonDTO> getAll(){
+		return (List<PersonDTO>) mapper.map(manager.findAll(), PersonDTO.class) ;
 	}
 	
-	@GetMapping("/person{id}")
-	public Person getById(Long id) {
-		return manager.findById(id);
+	@GetMapping("/{id}")
+	public PersonDTO getById(Long id) {
+		return mapper.map(manager.findById(id), PersonDTO.class);
 	}
 	
-	@PostMapping("/person")
-	public Person create(Person person) {
-		return manager.save(person);
+	@PostMapping
+	public PersonDTO create(Person person) {
+		return mapper.map(manager.save(person), PersonDTO.class);
 	}
 	
-	@PostMapping("/person/{id}/relate")
-	public Person relate(Long id, List<Person> people) {
-		return manager.relatePersons(manager.findById(id), people);
+	@PostMapping("/{id}/relate")
+	public PersonDTO relate(Long id, List<Person> people) {
+		return mapper.map(manager.relatePersons(manager.findById(id), people), PersonDTO.class);
 	}
 	
-	@DeleteMapping("/person/{id}")
+	@DeleteMapping("/{id}")
 	public void remove(Long id) {
-		
+		manager.remove(manager.findById(id));
 	}
 }

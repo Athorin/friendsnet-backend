@@ -5,11 +5,15 @@ package com.everis.alicante.courses.beca.java.friendsnet.controller;
 
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.everis.alicante.courses.beca.java.friendsnet.dto.PostDTO;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PersonManager;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PostManager;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
@@ -18,6 +22,8 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
  * @author Pakychoko
  *
  */
+@RestController
+@RequestMapping("/post")
 public class PostController {
 
 	@Autowired
@@ -26,28 +32,33 @@ public class PostController {
 	@Autowired
 	private PersonManager personManager;
 	
+	@Autowired
+	private DozerBeanMapper mapper;
 	
-	@GetMapping("/post")
-	public List<Post> getAll(){
-		return (List<Post>) manager.findAll();
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping
+	public List<PostDTO> getAll(){
+		return (List<PostDTO>) mapper.map(manager.findAll(), PostDTO.class);
 	}
 	
-	@GetMapping("/post/{id}")
-	public Post getById(Long id) {
-		return manager.findById(id);
+	@GetMapping("/{id}")
+	public PostDTO getById(Long id) {
+		return mapper.map(manager.findById(id), PostDTO.class) ;
 	}
 	
-	@GetMapping("/post/person/{id}")
-	public Iterable<Post> getByPersonId(Long id) {
-		return personManager.findById(id).getPostsOf();
+	@SuppressWarnings("unchecked")
+	@GetMapping("/person/{id}")
+	public Iterable<PostDTO> getByPersonId(Long id) {
+		return (Iterable<PostDTO>) mapper.map(personManager.findById(id).getPostsOf(), PostDTO.class);
 	}	
 	
-	@PostMapping("/post")
+	@PostMapping
 	public Post create(Post post) {
 		return manager.save(post);
 	}
 	
-	@DeleteMapping("/post/{id}")
+	@DeleteMapping("/{id}")
 	public void remove(Long id) {
 		manager.remove(manager.findById(id));
 	}
