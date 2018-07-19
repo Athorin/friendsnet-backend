@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.everis.alicante.courses.beca.java.friendsnet.dto.PostDTO;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PersonManager;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PostManager;
+import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
 
 /**
  * @author Pakychoko
@@ -55,8 +56,7 @@ public class PostController {
 
 	@PostMapping
 	public PostDTO create(@RequestBody PostDTO post) {
-		// return manager.save(post);
-		return null;
+		return mapper.map(manager.save(mapper.map(post, Post.class)), PostDTO.class);
 	}
 
 	@DeleteMapping("/{id}")

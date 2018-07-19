@@ -14,5 +14,5 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Perso
  */
 public interface GroupDAO extends CrudRepository<Group,Long> {
 
-	//public Group addPersons(Group group, Iterable<Person> person);
+	
 }

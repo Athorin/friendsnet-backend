@@ -53,8 +53,7 @@ public class PersonController {
 
 	@PostMapping
 	public PersonDTO create(@RequestBody PersonDTO person) {
-		// return mapper.map(manager.save(person), PersonDTO.class);
-		return null;
+		return mapper.map(manager.save(mapper.map(person, Person.class)), PersonDTO.class);
 	}
 
 	@PostMapping("/{id}/relate")

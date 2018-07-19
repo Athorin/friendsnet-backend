@@ -3,6 +3,7 @@
  */
 package com.everis.alicante.courses.beca.java.friendsnet.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
@@ -19,6 +20,8 @@ import com.everis.alicante.courses.beca.java.friendsnet.dto.GroupDTO;
 import com.everis.alicante.courses.beca.java.friendsnet.dto.PersonDTO;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.GroupManager;
 import com.everis.alicante.courses.beca.java.friendsnet.manager.PersonManager;
+import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Group;
+import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
 /**
  * @author Pakychoko
@@ -56,14 +59,25 @@ public class GroupController {
 
 	@PostMapping
 	public GroupDTO create(@RequestBody GroupDTO group) {
-		// return mapper.map(manager.save(group), GroupDTO.class);
-		return null;
+		return mapper.map(manager.save(mapper.map(group, Group.class)), GroupDTO.class);
 	}
 
 	@PostMapping("/{id}/relate")
-	public GroupDTO relate(@PathVariable("id") Long id, List<PersonDTO> personGroup) {
-		// return mapper.map(manager.addPersons(id, personGroup), GroupDTO.class) ;
-		return null;
+	public GroupDTO relate(@PathVariable("id") Long id, @RequestBody List<PersonDTO> personGroup) {
+		
+		List<Person> myList = new ArrayList<Person>();
+		
+		for(PersonDTO p: personGroup) {
+			myList.add(mapper.map(p, Person.class));
+		}
+		Group g = manager.addPersons(id, myList);
+		personGroup.clear();
+		
+		for(Person p: myList) {
+			personGroup.add(mapper.map(p, PersonDTO.class));
+		}
+		
+		return mapper.map(g, GroupDTO.class);
 	}
 
 	@DeleteMapping("/{id}")

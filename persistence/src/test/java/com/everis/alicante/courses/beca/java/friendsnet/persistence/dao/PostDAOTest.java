@@ -14,8 +14,8 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.EventDAO;
-import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Event;
+import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.PostDAO;
+import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
@@ -23,17 +23,17 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 @SpringBootTest
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
-public class EventDAOTest {
+public class PostDAOTest {
 
 	@Autowired
-	private EventDAO dao;
+	private PostDAO dao;
 
 	@Test
 	@DatabaseSetup("/db/dao/initial.xml")
 	public void testFindAll() {
 
 		// Act
-		final List<Event> all = (List<Event>) dao.findAll();
+		final List<Post> all = (List<Post>) dao.findAll();
 
 		// Assert
 		Assert.assertEquals(2, all.size());
@@ -47,11 +47,11 @@ public class EventDAOTest {
 	public void testFindById() {
 
 		// Act
-		final Event event =  dao.findById(1L).get();
+		final Post post =  dao.findById(1L).get();
 
 		// Assert
-		Assert.assertNotNull(event);
-		Assert.assertEquals((Long)1L, event.getId());
+		Assert.assertNotNull(post);
+		Assert.assertEquals((Long)1L, post.getId());
 		
 
 	}
@@ -60,14 +60,14 @@ public class EventDAOTest {
 	@DatabaseSetup("/db/dao/initial.xml")
 	public void testSave() {
 
-		Event e = new Event();
+		Post e = new Post();
 		
 		// Act
-		final Event event =  dao.save(e);
+		final Post post =  dao.save(e);
 
 		// Assert
-		Assert.assertNotNull(event);
-		Assert.assertEquals((Long)3L, event.getId());
+		Assert.assertNotNull(post);
+		Assert.assertEquals((Long)3L, post.getId());
 		
 
 	}
@@ -76,23 +76,21 @@ public class EventDAOTest {
 	@DatabaseSetup("/db/dao/initial.xml")
 	public void testSaveAll() {
 
-		List<Event> e = new ArrayList();
+		List<Post> e = new ArrayList();
 	
-		e.add(new Event());
-		e.add(new Event());
-		e.add(new Event());
+		e.add(new Post());
+		e.add(new Post());
+		e.add(new Post());
 
 		// Act
-		final List<Event> event =  (List<Event>) dao.saveAll(e);
+		final List<Post> post =  (List<Post>) dao.saveAll(e);
 
 		// Assert
-		Assert.assertNotNull(event);
-		Assert.assertEquals(3, event.size());
-		Assert.assertEquals((Long)4L, event.get(0).getId());
+		Assert.assertNotNull(post);
+		Assert.assertEquals(3, post.size());
+		Assert.assertEquals((Long)4L, post.get(0).getId());
 		
-
 	}
-	
-
+		
 
 }

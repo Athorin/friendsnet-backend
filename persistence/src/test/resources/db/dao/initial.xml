@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Event id="1" name="event1" />
+    <Event id="2" name="event2" />
+    
+    <GROUP_TABLE id="1" name="group1" />
+    <GROUP_TABLE id="2" name="group2" />
+    
+    <Person id="1" name="person1" />
+    <Person id="2" name="person2" />
+    
+    <Post id="1" text="post1" />
+    <Post id="2" text="post2" />
+
+</dataset>	
