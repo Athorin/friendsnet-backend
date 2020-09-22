@@ -3,13 +3,15 @@ package com.everis.alicante.courses.beca.java.friendsnet.dto;
 import java.util.Date;
 import java.util.List;
 
-import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
-import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.enumType.EventType;
 
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada/salida de eventos
+ * @author Pakychoko
+ */
 @Getter
 @Setter
 public class EventDTO {

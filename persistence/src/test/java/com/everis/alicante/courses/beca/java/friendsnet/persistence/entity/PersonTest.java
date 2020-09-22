@@ -14,6 +14,11 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 
+/**
+ * Tests del entity de personas
+ * @author Pakychoko
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,

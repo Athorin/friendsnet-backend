@@ -15,7 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.GroupDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Group;
 
-
+/**
+ * Clase de tests del manager de grupos
+ * @author Pakychoko
+ */
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class GroupManagerTest {

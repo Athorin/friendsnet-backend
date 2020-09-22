@@ -16,6 +16,10 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.EventDAO
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.PersonDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Event;
 
+/**
+ * Test de la clase Event Manager
+ * @author Pakychoko
+ */
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class EventManagerTest {
@@ -143,9 +147,6 @@ public class EventManagerTest {
 //		//Assert
 //		Assert.assertEquals(event, result);
 //	}
-	
-
-	
 	
 	
 }

@@ -15,12 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.PostDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
 
-
+/**
+ * Clase de tests del manager de posts
+ * @author Pakychoko
+ */
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class PostManagerTest {
-
-
 
 	@InjectMocks
 	private PostManagerImpl manager;
@@ -28,14 +29,12 @@ public class PostManagerTest {
 	@Mock
 	private PostDAO daoMock;
 
-
 	
 	@Test
 	public void testfindAll() {
 		//Arrange
 		Iterable<Post> posts = new ArrayList<Post>();
-
-		
+	
 		Mockito.when(daoMock.findAll()).thenReturn(posts);
 		
 		//Act
@@ -119,12 +118,12 @@ public class PostManagerTest {
 	
 	@Test
 	public void testRemove() {
-
+		//TODO
 	}
 	
 	@Test
 	public void testAddLike() {
-		
+		//TODO
 	}
 	
 }

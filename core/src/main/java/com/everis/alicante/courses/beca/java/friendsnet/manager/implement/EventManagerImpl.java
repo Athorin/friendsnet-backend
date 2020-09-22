@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 
 
@@ -14,8 +11,8 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Event
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
 /**
+ * Implementacion del manager de Eventos
  * @author Pakychoko
- *
  */
 @Service
 public class EventManagerImpl implements EventManager{
@@ -28,47 +25,40 @@ public class EventManagerImpl implements EventManager{
 
 	@Override
 	public Iterable<Event> findAll() {
-
 		return dao.findAll();
 	}
 
 	@Override
 	public Event findById(Long id) {
-		
 		return dao.findById(id).get();
 	}
 
 	@Override
 	public Event save(Event event) {
-		
 		return dao.save(event);
 	}
 
 	@Override
 	public Iterable<Event> save(Iterable<Event> events) {
-		
 		return dao.saveAll(events);	
 	}
 
 	@Override
 	public Event update(Event event) {
-		
 		return dao.save(event);
 	}
 
 	@Override
 	public Iterable<Event> update(Iterable<Event> events) {
-		
 		return dao.saveAll(events);
 	}
 
 	@Override
 	public void remove(Event event) {
-		
 		dao.delete(event);
 	}
 	
-
+	@Override
 	public Event addPerson(Long id_person, Long id_event) {
 		Person person = pDao.findById(id_person).get();
 		Event event = dao.findById(id_event).get();

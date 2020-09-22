@@ -15,7 +15,11 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.enumType.PostType;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 
-
+/**
+ * Tests del entity de posts
+ * @author Pakychoko
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,

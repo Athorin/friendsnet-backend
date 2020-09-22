@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.everis.alicante.courses.beca.java.friendsnet.persistence.entity;
 
 import java.util.List;
@@ -11,16 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
 
 /**
+ * Entity de Grupos
  * @author Pakychoko
- *
  */
+@Data
 @Entity(name = "GROUP_TABLE")
 public class Group implements FNEntity {
 

@@ -18,7 +18,11 @@ import com.everis.alicante.courses.beca.java.friendsnet.manager.implement.EventM
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Event;
 import com.everis.alicante.courses.beca.java.friendsnet.utils.MockitoFactory;
 
-
+/**
+ * Clase de tests de Eventos
+ * @author Pakychoko
+ *
+ */
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class EventControllerTest {
@@ -32,6 +36,7 @@ public class EventControllerTest {
 	@Mock
 	private DozerBeanMapper mapper;
 	
+
 	@Test
 	public void testGetAll() {
 		//Arrange

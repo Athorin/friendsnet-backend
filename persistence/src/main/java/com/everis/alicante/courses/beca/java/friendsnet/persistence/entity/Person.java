@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.everis.alicante.courses.beca.java.friendsnet.persistence.entity;
 
 import java.util.List;
@@ -9,21 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-
-@Getter @Setter
 
 /**
+ * Entity de Person
  * @author Pakychoko
- *
  */
+@Data
 @Entity  
 public class Person implements FNEntity {
 

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 
 
@@ -12,8 +9,8 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.PersonDA
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
 /**
+ * Implementacion del manager de personas
  * @author Pakychoko
- *
  */
 @Service
 public class PersonManagerImpl implements PersonManager{
@@ -58,6 +55,7 @@ public class PersonManagerImpl implements PersonManager{
 
 	@Override
 	public Person relatePersons(Person person, Iterable<Person> people) {
+		//TODO
 		return null;
 	}
 	

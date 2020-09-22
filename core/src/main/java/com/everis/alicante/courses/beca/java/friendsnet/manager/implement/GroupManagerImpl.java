@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 
 import java.util.Collection;
@@ -14,6 +11,7 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Group
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
 /**
+ * Implementacion del manager de grupos
  * @author Pakychoko
  *
  */

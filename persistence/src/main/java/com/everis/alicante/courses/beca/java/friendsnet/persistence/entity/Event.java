@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.everis.alicante.courses.beca.java.friendsnet.persistence.entity;
 
 import java.util.Date;
@@ -15,15 +12,14 @@ import javax.persistence.OneToMany;
 
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.enumType.EventType;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter @Setter
 
 /**
+ * Entity de Eventos
  * @author Pakychoko
- *
  */
+@Data
 @Entity
 public class Event implements FNEntity{
 

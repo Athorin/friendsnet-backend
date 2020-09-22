@@ -18,6 +18,11 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
+/**
+ * Tests del repositorio de posts
+ * @author Pakychoko
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.everis.alicante.courses.beca.java.friendsnet.persistence.entity;
 
 import java.util.Date;
@@ -12,21 +9,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.enumType.PostType;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter @Setter
+import lombok.Data;
 
 /**
+ * Entity de Post
  * @author Pakychoko
- *
  */
+@Data
 @Entity
 public class Post implements FNEntity {
 
@@ -51,6 +45,5 @@ public class Post implements FNEntity {
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="event_id")
 	private Event eventOf;
-	
 	
 }

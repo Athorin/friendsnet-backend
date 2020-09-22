@@ -15,19 +15,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.PersonDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Person;
 
+/**
+ * Clase de tests del manager de personas
+ * @author Pakychoko
+ */
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class PersonManagerTest {
-
-
 
 	@InjectMocks
 	private PersonManagerImpl manager;
 	
 	@Mock
 	private PersonDAO daoMock;
-
-
+	
 	
 	@Test
 	public void testfindAll() {
@@ -118,6 +119,6 @@ public class PersonManagerTest {
 	
 	@Test
 	public void testRemove() {
-
+		//TODO
 	}
 }

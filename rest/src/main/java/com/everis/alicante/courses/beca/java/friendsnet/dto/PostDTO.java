@@ -8,6 +8,11 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.enumT
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada/salida de Posts
+ * @author Pakychoko
+ *
+ */
 @Getter
 @Setter
 public class PostDTO {

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.everis.alicante.courses.beca.java.friendsnet.persistence.entity;
 
 import java.util.Date;
@@ -12,19 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.enumType.LikeType;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter @Getter
 
 /**
+ * Entity de Like
  * @author Pakychoko
- *
  */
+@Data
 @Entity(name = "LIKE_TABLE")
 public class Like implements FNEntity {
 

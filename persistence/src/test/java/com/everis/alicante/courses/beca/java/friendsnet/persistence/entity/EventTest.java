@@ -15,6 +15,11 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.enumType.EventType;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 
+/**
+ * Tests del entity de Eventos
+ * @author Pakychoko
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,

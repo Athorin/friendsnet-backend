@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.everis.alicante.courses.beca.java.friendsnet.manager.implement;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +9,8 @@ import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Like;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
 
 /**
+ * Implementacion del manager de posts
  * @author Pakychoko
- *
  */
 @Service
 public class PostManagerImpl implements PostManager {
@@ -58,6 +55,7 @@ public class PostManagerImpl implements PostManager {
 
 	@Override
 	public Post addLike(Like like) {
+		//TODO
 		return null;
 	}
 	
