@@ -14,7 +14,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.PostDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Post;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
@@ -39,7 +38,6 @@ public class PostDAOTest {
 		Assert.assertEquals(2, all.size());
 		Assert.assertEquals((Long) 1L, all.get(0).getId());
 		Assert.assertEquals((Long) 2L, all.get(1).getId());
-
 	}
 	
 	@Test
@@ -52,8 +50,6 @@ public class PostDAOTest {
 		// Assert
 		Assert.assertNotNull(post);
 		Assert.assertEquals((Long)1L, post.getId());
-		
-
 	}
 	
 	@Test
@@ -68,15 +64,13 @@ public class PostDAOTest {
 		// Assert
 		Assert.assertNotNull(post);
 		Assert.assertEquals((Long)3L, post.getId());
-		
-
 	}
 	
 	@Test
 	@DatabaseSetup("/db/dao/initial.xml")
 	public void testSaveAll() {
 
-		List<Post> e = new ArrayList();
+		List<Post> e = new ArrayList<Post>();
 	
 		e.add(new Post());
 		e.add(new Post());
@@ -88,8 +82,7 @@ public class PostDAOTest {
 		// Assert
 		Assert.assertNotNull(post);
 		Assert.assertEquals(3, post.size());
-		Assert.assertEquals((Long)4L, post.get(0).getId());
-		
+		Assert.assertEquals((Long)4L, post.get(0).getId());	
 	}
 		
 

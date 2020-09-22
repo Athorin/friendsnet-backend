@@ -1,12 +1,6 @@
 package com.everis.alicante.courses.beca.java.friendsnet.persistence.entity;
 
 import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -31,16 +25,13 @@ public class PostTest {
 	
 	@Test
 	public void testPost() {
-
-		
+	
 		Post e = new Post();
 		Date d = new Date("11/11/2011");
-		
 		e.setId(1L);
 		e.setText("Pepe");
 		e.setCreationDate(d);
 		e.setType(PostType.OTHER);
-
 
 		// Assert
 		Assert.assertNotNull(e);
@@ -52,7 +43,6 @@ public class PostTest {
 		Assert.assertNull(e.getLikesOf());
 		Assert.assertNull(e.getPersonOf());
 		Assert.assertNull(e.getEventOf());
-
 	}
 	
 	

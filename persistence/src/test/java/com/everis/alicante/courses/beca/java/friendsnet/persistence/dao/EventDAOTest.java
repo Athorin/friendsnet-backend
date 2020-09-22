@@ -14,7 +14,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.EventDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Event;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
@@ -39,7 +38,6 @@ public class EventDAOTest {
 		Assert.assertEquals(2, all.size());
 		Assert.assertEquals((Long) 1L, all.get(0).getId());
 		Assert.assertEquals((Long) 2L, all.get(1).getId());
-
 	}
 	
 	@Test
@@ -52,8 +50,6 @@ public class EventDAOTest {
 		// Assert
 		Assert.assertNotNull(event);
 		Assert.assertEquals((Long)1L, event.getId());
-		
-
 	}
 	
 	@Test
@@ -68,15 +64,13 @@ public class EventDAOTest {
 		// Assert
 		Assert.assertNotNull(event);
 		Assert.assertEquals((Long)3L, event.getId());
-		
-
 	}
 	
 	@Test
 	@DatabaseSetup("/db/dao/initial.xml")
 	public void testSaveAll() {
 
-		List<Event> e = new ArrayList();
+		List<Event> e = new ArrayList<Event>();
 	
 		e.add(new Event());
 		e.add(new Event());
@@ -89,10 +83,7 @@ public class EventDAOTest {
 		Assert.assertNotNull(event);
 		Assert.assertEquals(3, event.size());
 		Assert.assertEquals((Long)4L, event.get(0).getId());
-		
-
 	}
 	
-
 
 }

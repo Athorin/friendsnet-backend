@@ -1,7 +1,6 @@
 package com.everis.alicante.courses.beca.java.friendsnet.persistence.entity;
 
 import java.util.Date;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +12,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Event;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.enumType.EventType;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 
@@ -23,21 +21,17 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
 public class EventTest {
 
-
 	
 	@Test
 	public void testEvent() {
-
 		
 		Event e = new Event();
-		Date d = new Date("11/11/2011");
-		
 		e.setId(1L);
 		e.setName("Pepe");
+		Date d = new Date("11/11/2011");
 		e.setStartingDate(d);
 		e.setEndingDate(d);
 		e.setType(EventType.PARTY);
-
 
 		// Assert
 		Assert.assertNotNull(e);
@@ -49,7 +43,6 @@ public class EventTest {
 		Assert.assertNull(e.getPicture());
 		Assert.assertNull(e.getPersonsOf());
 		Assert.assertNull(e.getPostsOf());
-
 	}
 	
 	

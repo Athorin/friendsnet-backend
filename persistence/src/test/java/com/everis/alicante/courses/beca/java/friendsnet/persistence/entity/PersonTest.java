@@ -23,16 +23,12 @@ public class PersonTest {
 	
 	@Test
 	public void testPerson() {
-
-		
+	
 		Person e = new Person();
-		Date d = new Date("11/11/2011");
-		
+		Date d = new Date("11/11/2011");	
 		e.setId(1L);
 		e.setName("Pepe");
 		e.setSurname("Pepe2");
-
-
 
 		// Assert
 		Assert.assertNotNull(e);

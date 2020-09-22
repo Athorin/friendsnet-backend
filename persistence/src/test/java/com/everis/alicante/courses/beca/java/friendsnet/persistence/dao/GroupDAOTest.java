@@ -14,7 +14,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-import com.everis.alicante.courses.beca.java.friendsnet.persistence.dao.GroupDAO;
 import com.everis.alicante.courses.beca.java.friendsnet.persistence.entity.Group;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
@@ -39,7 +38,6 @@ public class GroupDAOTest {
 		Assert.assertEquals(2, all.size());
 		Assert.assertEquals((Long) 1L, all.get(0).getId());
 		Assert.assertEquals((Long) 2L, all.get(1).getId());
-
 	}
 	
 	@Test
@@ -52,8 +50,6 @@ public class GroupDAOTest {
 		// Assert
 		Assert.assertNotNull(group);
 		Assert.assertEquals((Long)1L, group.getId());
-		
-
 	}
 	
 	@Test
@@ -68,15 +64,13 @@ public class GroupDAOTest {
 		// Assert
 		Assert.assertNotNull(group);
 		Assert.assertEquals((Long)3L, group.getId());
-		
-
 	}
 	
 	@Test
 	@DatabaseSetup("/db/dao/initial.xml")
 	public void testSaveAll() {
 
-		List<Group> e = new ArrayList();
+		List<Group> e = new ArrayList<Group>();
 	
 		e.add(new Group());
 		e.add(new Group());
@@ -89,7 +83,6 @@ public class GroupDAOTest {
 		Assert.assertNotNull(group);
 		Assert.assertEquals(3, group.size());
 		Assert.assertEquals((Long)4L, group.get(0).getId());
-		
-
 	}
+	
 }
