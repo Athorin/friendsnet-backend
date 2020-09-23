@@ -62,7 +62,14 @@ public class EventRepositoryImpl implements EventRepository {
 			predicates.add(cb.equal(event.get("type"), type));
 		}
 		
+		// Podemos elegir las columnas que queremos rescatar
+		// cq.multiselect(event.get("id"), event.get("name"));
+		
+		// Si queremos rescatar columnas de diferentes tablas a traves del join, deberemos crear
+		// un objeto "ResultadoConsulta" con los campos necesarios y luegos mapearlos a sus respectivos entities
+		
 		cq.where(predicates.toArray(new Predicate[0]));
+		cq.orderBy(cb.asc(event.get("id")));
 		
 		// Consultamos
 		TypedQuery<Event> query = em.createQuery(cq);
